@@ -23,6 +23,10 @@ assign_ticket()
 assign_ticket()
 assign_ticket()
 assign_ticket()
+assign_ticket()
+assign_ticket()
+
+print(assign_ticket)
 
 print(currentTicket)
 
