@@ -1,72 +1,78 @@
-# Testing 
 
-# Your parking *gargage class* should have the following methods:
 
-# - takeTicket
-# - This should decrease the amount of tickets available by 1
-# - This should decrease the amount of parking Spaces available by 1
-
-# - pay For Parking
-# - Display an input that waits for an amount from the user and store it in a variable
-# - If the payment variable is not empty then (meaning the ticket has been paid) 
-#           -> display a message to the user that their ticket has been paid and they have 15mins to leave
-# - This should update the "currentTicket" dictionary key "paid" to True
-
-# -leaveGarage
-# - If the ticket has been paid, display a message of "Thank You, have a nice day"
-# - If the ticket has not been paid, display an input prompt for payment
-# - Once paid, display message "Thank you, have a nice day!"
-# - Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
-# - Update tickets list to increase by 1 (meaning add to the tickets list)
-
-# You will need a few attributes as well:
-# - tickets -> list
-# - parkingSpaces -> list
-# - currentTicket -> dictionary
-
-class Ticket_container():
+class Garage_in():
+    """Class and method to hold/give/recieve tickets & parking spaces"""
     def __init__(self):
-        self.ticket = 200
-        self.pk_space = 200
-        self.currentTicket = {}
+        self.ticket = []
+        self.park_space = ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10']
+                    #ticket id 
+        self.ticket_num = { i:True for i in range(1,11) 
+        }
 
+# Method to enter garage for accessing 2 payment types
+    def enter_garage(self):
+        self.tic_taken = ['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10']
+
+        ticket_choice = input(" Type '1' for ticket or '2' to exit: ")
     
-    def take_ticket(self):
-        # ticket = input("")
-        remove_tickets = Product(ticket)
-        self.ticket.append(remove_tickets)
-        for i in range(self.ticket):
-            if self.ticket[i].ticket == 200:
-                 -=
+        ticket_choice == "1":
+    
+
+        # i in range(len(self.ticket))
+        #     if self.ticket[i] == ticket_choice:
+        #         self.ticket
+        # else:
+        #     ticket_choice == "2"
+        #     print("Reminder to pay later")
+        #     self.pay_later()
+
+    def tickets(self):
+        return self.ticket
         
 
-    def p_space(self):
-        slot = 200
-        for i in range(self.pk_space):
-            if self.pk_space[i].ticket == slot:
+    def pay_now(self):
+        place_payment = int(input("Parking = $12.00 Please type '12': "))
+        if place_payment == True:
+            print("Thanks for your business you have 15 minutes to leave")
+        else:
+            self.enter_garage()
 
-    # def print_tk_reciept(self):
-    #     for ticket_sales in self.tickts:
-    #         print(f"Thank You, have a nice day{")
+# car_driver_pay_later = 
+    def pay_later(self):
+        later_payment = int(input("Parking = $12.00 Please type '12': "))
+        if later_payment == True:
+            self.enter_garage()
+    
+                
+    def tickets_in_out(self):
+        pass
+    
+    def exit_garage(self):
+        return
 
     def run(self):
-        while True:
-            car_driver = input("Garage Options (ticket/pay/leave)")
+            driver_choice = input("Parking today? (y/n): ")
 
-            if car_driver == "ticket":
-                self.take_ticket()
-            elif car_driver == "pay":
-                self.
-            elif car_driver == "leave":
-                self.
+            if driver_choice == "y":
+                self.enter_garage()
+            elif driver_choice == "n":
+                self.exit_garage()
+                return
             
+                
+                
 
 
-class Product():
-    def __init__(self, ticket, parkingSpaces, currentTicket):
+class Garage():
+    def __init__(self,ticket,park_space,ticket_num):
         self.ticket = ticket
-        self.parkingSpaces = parkingSpaces
-        self.currentTicket = currentTicket
+        self.park_space = park_space
+        self.ticket_num = ticket_num
 
-ticket_exchange = Ticket_container()
-ticket_exchange.run()
+    
+
+
+        
+
+spend = Garage_in()
+spend.run()
