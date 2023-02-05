@@ -1,56 +1,64 @@
+# Your parking gargage class should have the following methods:
+# - takeTicket
+# - This should decrease the amount of tickets available by 1
+# - This should decrease the amount of parkingSpaces available by 1
+# - payForParking
+
+# - Display an input that waits for an amount from the user and store it in a variable
+# - If the payment variable is not empty then (meaning the ticket has been paid) -> display a message to the user that their ticket has been paid and they have 15mins to leave
+# - This should update the "currentTicket" dictionary key "paid" to True
+
+# -leaveGarage
+# - If the ticket has been paid, display a message of "Thank You, have a nice day"
+# - If the ticket has not been paid, display an input prompt for payment
+# - Once paid, display message "Thank you, have a nice day!"
+# - Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
+# - Update tickets list to increase by 1 (meaning add to the tickets list)
+
+# You will need a few attributes as well:
+# - tickets -> list
+# - parkingSpaces -> list
+# - currentTicket -> dictionary
+
 
 
 class Garage_in():
     """Class and method to hold/give/recieve tickets & parking spaces"""
     def __init__(self):
-        self.ticket = []
-        self.park_space = ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10']
-                    #ticket id 
-        self.ticket_num = { i:True for i in range(1,11) 
-        }
+        self.tickets = 10
+        self.open_spaces = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9', 'P10']
+        self.closed_spaces = []
+        self.currentTicket = {"Paid": False}    
 
-# Method to enter garage for accessing 2 payment types
+#Method to execute taking ticket and parking space. 
     def enter_garage(self):
-        self.tic_taken = ['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10']
+        if self.tickets > 0:
+            driver_response1 = input("Select lot you would like to reserve: [P1], [P2], [P3], [P4], [P5], [P6], [P7], [P8], [P9], [P10] ")
+            if driver_response1.lower() == "p1" or "p2" or "p3" or "p4" or "p5" or "p6" or "p7" or "p8" or "p9" or "p10":
+                self.open_spaces.remove(driver_response1.upper())
+                self.closed_spaces.append(driver_response1.upper())
+                print(f"You have reserved {driver_response1}, Please take your ticket.")
+                self.tickets -= 1
+        elif self.tickets <= 0:
+                print(f"We have {self.tickets} available in our garage, please try again later")
+    # def pay_now(self):
+    #     paying = input("Would you like to ")
 
-        ticket_choice = input(" Type '1' for ticket or '2' to exit: ")
-    
-        ticket_choice == "1":
-    
-
-        # i in range(len(self.ticket))
-        #     if self.ticket[i] == ticket_choice:
-        #         self.ticket
-        # else:
-        #     ticket_choice == "2"
-        #     print("Reminder to pay later")
-        #     self.pay_later()
-
-    def tickets(self):
-        return self.ticket
-        
-
-    def pay_now(self):
-        place_payment = int(input("Parking = $12.00 Please type '12': "))
-        if place_payment == True:
-            print("Thanks for your business you have 15 minutes to leave")
-        else:
-            self.enter_garage()
-
-# car_driver_pay_later = 
-    def pay_later(self):
-        later_payment = int(input("Parking = $12.00 Please type '12': "))
-        if later_payment == True:
-            self.enter_garage()
-    
-                
-    def tickets_in_out(self):
-        pass
-    
     def exit_garage(self):
-        return
+#When driver returns a ticket parking space and ticket count will increment by 1"""
+        if self.currentTicket["Paid"] == False:
+            # self.parkingSpaces()
+        elif self.currentTicket["Paid"] == True:
+            driver_response3 = input("Select lot you are returning: [P1], [P2], [P3], [P4], [P5], [P6], [P7], [P8], [P9], [P10] ")
+            if driver_response3.lower() == "p1" or "p2" or "p3" or "p4" or "p5" or "p6" or "p7" or "p8" or "p9" or "p10":
+                self.closed_spaces.remove.remove(driver_response3.upper())
+                self.open_spaces.append(driver_response3.upper())
+            print("Your ticket has been paid you have 15 minutes to leave.")
+            print("Thank you, have a nice day!")
+            self.tickets += 1
 
     def run(self):
+        while True:
             driver_choice = input("Parking today? (y/n): ")
 
             if driver_choice == "y":
@@ -58,21 +66,32 @@ class Garage_in():
             elif driver_choice == "n":
                 self.exit_garage()
                 return
-            
-                
-                
-
 
 class Garage():
-    def __init__(self,ticket,park_space,ticket_num):
-        self.ticket = ticket
+    def __init__(self,tickets,park_space,ticket_num):
+        self.tickets = tickets
         self.park_space = park_space
         self.ticket_num = ticket_num
 
-    
-
-
-        
-
 spend = Garage_in()
 spend.run()
+
+
+#    def pay_now(self):
+#         self.payment
+
+#         place_payment = int(input("Parking = $12.00 Please type '12': "))
+#         if place_payment == True:
+#             print("Thanks for your business you have 15 minutes to leave")
+#         else:
+#             self.enter_garage()
+
+# # car_driver_pay_later = 
+#     def pay_later(self):
+#         later_payment = int(input("Parking = $12.00 Please type '12': "))
+#         if later_payment == True:
+#             self.enter_garage()
+    
+                
+#     def tickets_in_out(self):
+#         pass
