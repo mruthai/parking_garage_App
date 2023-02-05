@@ -28,7 +28,8 @@ class Garage_in():
         self.tickets = 10
         self.open_spaces = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9', 'P10']
         self.closed_spaces = []
-        self.currentTicket = {"Paid": False}    
+        self.currentTicket = {"Paid": False}
+          
 
 #Method to execute taking ticket and parking space. 
     def enter_garage(self):
@@ -41,37 +42,55 @@ class Garage_in():
                 self.tickets -= 1
         elif self.tickets <= 0:
                 print(f"We have {self.tickets} available in our garage, please try again later")
-    # def pay_now(self):
-    #     paying = input("Would you like to ")
 
-    def exit_garage(self):
+        driver_response1 = input("Would you like to now or later? Type '1' for NOW or '2' for Later: ")
+        if driver_response1.lower() == '1':
+            self.exit_garage1()
+        elif driver_response1.lower() == '2':
+            self.exit_garage2()
+         
+
+    def exit_garage1(self):
 #When driver returns a ticket parking space and ticket count will increment by 1"""
-        if self.currentTicket["Paid"] == False:
-            # self.parkingSpaces()
-        elif self.currentTicket["Paid"] == True:
+
+        # if self.currentTicket["Paid"] == False:
+            
+            # driver_response3 = input(f"Please enter your ticket number: ")
+
+        if self.currentTicket["Paid"] == True:
             driver_response3 = input("Select lot you are returning: [P1], [P2], [P3], [P4], [P5], [P6], [P7], [P8], [P9], [P10] ")
             if driver_response3.lower() == "p1" or "p2" or "p3" or "p4" or "p5" or "p6" or "p7" or "p8" or "p9" or "p10":
                 self.closed_spaces.remove.remove(driver_response3.upper())
                 self.open_spaces.append(driver_response3.upper())
-            print("Your ticket has been paid you have 15 minutes to leave.")
+            print("Your ticket has been paid $15 dollars, you have 15 minutes to leave.")
             print("Thank you, have a nice day!")
             self.tickets += 1
+            return
+
+    def exit_garage2(self):
+#When driver returns a ticket parking space and ticket count will increment by 1"""
+        print("You have not paid your ticket")
+        if self.currentTicket["Paid"] == False:
+            print("Your ticket has been paid $15 dollars, you have 15 minutes to leave.")
+            print("Thank you, have a nice day!")
+            return
 
     def run(self):
         while True:
-            driver_choice = input("Parking today? (y/n): ")
+            driver_choice = input("Parking today? (y/n) or quit: ")
 
-            if driver_choice == "y":
+            if driver_choice.lower() == "y":
                 self.enter_garage()
-            elif driver_choice == "n":
-                self.exit_garage()
+            elif driver_choice.lower() == "n":
+                
                 return
 
 class Garage():
-    def __init__(self,tickets,park_space,ticket_num):
+    def __init__(self,tickets,park_space,payment):
         self.tickets = tickets
         self.park_space = park_space
-        self.ticket_num = ticket_num
+        self.payment = payment
+        
 
 spend = Garage_in()
 spend.run()
