@@ -1,25 +1,3 @@
-# Your parking gargage class should have the following methods:
-# - takeTicket
-# - This should decrease the amount of tickets available by 1
-# - This should decrease the amount of parkingSpaces available by 1
-# - payForParking
-
-# - Display an input that waits for an amount from the user and store it in a variable
-# - If the payment variable is not empty then (meaning the ticket has been paid) -> display a message to the user that their ticket has been paid and they have 15mins to leave
-# - This should update the "currentTicket" dictionary key "paid" to True
-
-# -leaveGarage
-# - If the ticket has been paid, display a message of "Thank You, have a nice day"
-# - If the ticket has not been paid, display an input prompt for payment
-# - Once paid, display message "Thank you, have a nice day!"
-# - Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
-# - Update tickets list to increase by 1 (meaning add to the tickets list)
-
-# You will need a few attributes as well:
-# - tickets -> list
-# - parkingSpaces -> list
-# - currentTicket -> dictionary
-
 
 
 class Garage_in():
@@ -64,20 +42,15 @@ class Garage_in():
             self.exit_garage_Later()
          
 #When driver returns a ticket parking space and ticket count will increment by 1"""
-#user will get a reciept after they finish. 
+#user will get a reciept after they finish.
+#DID NOT ADD FAIL SAFES- IF user entered in incorrect parking lot id.
     def exit_garage_now(self):
 
         if self.currentTicket["Paid"] == False:
             driver_response3 = input("Select lot you are returning: [P1], [P2], [P3], [P4], [P5], [P6], [P7], [P8], [P9], [P10] ")
             if driver_response3.lower() == "p1" or "p2" or "p3" or "p4" or "p5" or "p6" or "p7" or "p8" or "p9" or "p10":
-                print("Your ticket has been paid $15 dollars, you have 15 minutes to leave.")
-                print("\nThank you, have a nice day!")
-                self.reciept()
-                # for value in self.car_reciepts:
-                #     if value == self.car_info:
-                #             self.car_info.remove(value)
-                # print("after for loop runs")            
-                # self.reciept()            
+                print("\nYour ticket has been paid. You have 15 minutes to leave.")
+                self.reciept()         
                 self.closed_spaces.remove(driver_response3.upper())
                 self.open_spaces.append(driver_response3.upper())
             self.tickets += 1
@@ -94,17 +67,19 @@ class Garage_in():
     def reciept(self):
 
         for exit_ticket in self.car_info:
+            print("---RECIEPT---")
             print(f"Vehicle Type: {exit_ticket.vehicle_type}")
             print(f"Make: {exit_ticket.make}")
-            print(f"model: {exit_ticket.model}")
-            print(f"plate_ID: {exit_ticket.plate_ID}")
-            print(f"PAID $15.00")
+            print(f"Model: {exit_ticket.model}")
+            print(f"Plate_ID: {exit_ticket.plate_ID}")
+            print(f"\nPAID $15.00")
+            print("Thank you, have a nice day!")
             self.car_reciepts.append(exit_ticket)
     
 #driver/user access point to parking lot. 
     def run(self):
         while True:
-            driver_choice = input("Parking today: '1' to register. '2' for ticket. '3' for pay. 'q' to quit:  ")
+            driver_choice = input("\nParking today: '1' to register. '2' for ticket. '3' for pay. 'q' to quit:  ")
 
             if (driver_choice) == "1":
                 self.register()
@@ -125,23 +100,3 @@ class Garage():
 
 spend = Garage_in()
 spend.run()
-
-
-#    def pay_now(self):
-#         self.payment
-
-#         place_payment = int(input("Parking = $12.00 Please type '12': "))
-#         if place_payment == True:
-#             print("Thanks for your business you have 15 minutes to leave")
-#         else:
-#             self.enter_garage()
-
-# # car_driver_pay_later = 
-#     def pay_later(self):
-#         later_payment = int(input("Parking = $12.00 Please type '12': "))
-#         if later_payment == True:
-#             self.enter_garage()
-    
-                
-#     def tickets_in_out(self):
-#         pass
